@@ -28,7 +28,7 @@
     "parse-pkg-name": "^2.0.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-terser": "^6.1.0",
-    "rollup-plugin-vue": "^5.0.0"
+    "rollup-plugin-vue": "dword-design/rollup-plugin-vue#fork"
   },
   "devDependencies": {
     "@dword-design/base": "^6.24.2"
