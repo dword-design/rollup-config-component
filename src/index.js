@@ -1,17 +1,13 @@
-import { compact, join } from '@dword-design/functions'
 import commonjs from '@rollup/plugin-commonjs'
 import replace from '@rollup/plugin-replace'
 import fs from 'fs-extra'
-import loadPkg from 'load-pkg'
 import minimist from 'minimist'
-import parsePkgName from 'parse-pkg-name'
 import babel from 'rollup-plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 import vue from 'rollup-plugin-vue'
 
-const packageConfig = loadPkg.sync()
-const nameParts = parsePkgName(packageConfig.name)
-const stylePrefix = [nameParts.org, nameParts.name] |> compact |> join('-')
+import generateScopedName from './generate-scoped-name'
+
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs
   .readFileSync('./.browserslistrc')
@@ -34,8 +30,7 @@ const baseConfig = {
       css: true,
       style: {
         postcssModulesOptions: {
-          generateScopedName: `${stylePrefix}__[local]__[hash:base64:4]`,
-          hashPrefix: stylePrefix,
+          generateScopedName,
         },
       },
       template: {
