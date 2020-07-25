@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/dword-design/rollup-config-component/compare/v1.0.1...v1.0.2) (2020-07-25)
+
+
+### Bug Fixes
+
+* use rollup-plugin-vue fork ([fe2f9ed](https://github.com/dword-design/rollup-config-component/commit/fe2f9edf9ea50c43daade430d453949fdb3a54c3))
+
 ## [1.0.1](https://github.com/dword-design/rollup-config-component/compare/v1.0.0...v1.0.1) (2020-07-25)
 
 
