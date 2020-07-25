@@ -30,8 +30,8 @@ const baseConfig = {
       css: true,
       style: {
         postcssModulesOptions: {
-          localsConvention: 'camelCase',
           generateScopedName,
+          localsConvention: 'camelCase',
         },
       },
       template: {
