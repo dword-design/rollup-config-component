@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/dword-design/rollup-config-component/compare/v1.0.3...v1.0.4) (2020-08-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-commonjs to v15 ([c63427b](https://github.com/dword-design/rollup-config-component/commit/c63427bf8afa3e793547667392889d5654ab4740))
+* **deps:** update dependency rollup-plugin-terser to v7 ([2881c12](https://github.com/dword-design/rollup-config-component/commit/2881c12b496155e7851848f205b857f5f385d211))
+
 ## [1.0.3](https://github.com/dword-design/rollup-config-component/compare/v1.0.2...v1.0.3) (2020-08-23)
 
 
