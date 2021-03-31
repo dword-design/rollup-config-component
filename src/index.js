@@ -14,7 +14,9 @@ const esbrowserslist = fs
   .toString()
   .split('\n')
   .filter(entry => entry && entry.substring(0, 2) !== 'ie')
+
 const argv = minimist(process.argv.slice(2))
+
 const baseConfig = {
   input: 'src/entry.js',
   plugins: {
@@ -40,6 +42,7 @@ const baseConfig = {
     },
   },
 }
+
 // ESM/UMD/IIFE shared settings: externals
 // Refer to https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency
 const external = [
@@ -47,6 +50,7 @@ const external = [
   // eg. 'jquery'
   'vue',
 ]
+
 // UMD/IIFE shared settings: output.globals
 // Refer to https://rollupjs.org/guide/en#output-globals for details
 const globals = {
@@ -54,6 +58,7 @@ const globals = {
   // eg. jquery: '$'
   vue: 'Vue',
 }
+
 // Customize configs for individual targets
 const buildFormats = []
 if (!argv.format || argv.format === 'es') {
