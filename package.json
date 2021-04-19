@@ -26,7 +26,7 @@
     "fs-extra": "^9.0.1",
     "load-pkg": "^4.0.0",
     "minimist": "^1.2.5",
-    "parse-pkg-name": "^2.0.0",
+    "parse-packagejson-name": "^1.0.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-terser": "^7.0.0",
     "rollup-plugin-vue": "dword-design/rollup-plugin-vue#fork"
