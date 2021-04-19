@@ -32,7 +32,7 @@
     "rollup-plugin-vue": "dword-design/rollup-plugin-vue#fork"
   },
   "devDependencies": {
-    "@dword-design/base": "^7.0.0"
+    "@dword-design/base": "^7.13.2"
   },
   "publishConfig": {
     "access": "public"
