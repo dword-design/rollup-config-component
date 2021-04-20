@@ -1,7 +1,7 @@
 {
   "name": "@dword-design/rollup-config-component",
   "version": "1.0.12",
-  "description": "",
+  "description": null,
   "repository": "dword-design/rollup-config-component",
   "funding": "https://www.buymeacoffee.com/dword",
   "license": "MIT",
@@ -36,5 +36,7 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "homepage": null,
+  "keywords": []
 }
