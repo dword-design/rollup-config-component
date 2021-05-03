@@ -19,7 +19,7 @@
     "test": "base test"
   },
   "dependencies": {
-    "@dword-design/functions": "^3.0.0",
+    "@dword-design/functions": "^4.0.0",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-replace": "^2.3.3",
     "fs-extra": "^9.0.1",
