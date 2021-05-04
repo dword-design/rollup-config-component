@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/dword-design/rollup-config-component/compare/v2.0.1...v2.0.2) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency fs-extra to v10 ([#31](https://github.com/dword-design/rollup-config-component/issues/31)) ([7c69033](https://github.com/dword-design/rollup-config-component/commit/7c69033b8dcf2c76e83ba5074826ccd1ebbaea5e))
+
 ## [2.0.1](https://github.com/dword-design/rollup-config-component/compare/v2.0.0...v2.0.1) (2021-05-04)
 
 
