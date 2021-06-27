@@ -1,8 +1,8 @@
+import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import replace from '@rollup/plugin-replace'
 import fs from 'fs-extra'
 import minimist from 'minimist'
-import babel from 'rollup-plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 import vue from 'rollup-plugin-vue'
 
