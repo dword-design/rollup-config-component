@@ -1,3 +1,10 @@
+## [2.0.5](https://github.com/dword-design/rollup-config-component/compare/v2.0.4...v2.0.5) (2021-06-27)
+
+
+### Bug Fixes
+
+* update dependency @rollup/plugin-commonjs to v19 ([#32](https://github.com/dword-design/rollup-config-component/issues/32)) ([e03a15d](https://github.com/dword-design/rollup-config-component/commit/e03a15df4d8a2d52695b72d722edf8a66c6daa36))
+
 ## [2.0.4](https://github.com/dword-design/rollup-config-component/compare/v2.0.3...v2.0.4) (2021-06-14)
 
 
