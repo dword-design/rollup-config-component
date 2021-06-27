@@ -1,3 +1,10 @@
+## [2.0.7](https://github.com/dword-design/rollup-config-component/compare/v2.0.6...v2.0.7) (2021-06-27)
+
+
+### Bug Fixes
+
+* replace rollup-plugin-babel with @rollup/plugin-babel ([#41](https://github.com/dword-design/rollup-config-component/issues/41)) ([805cfb8](https://github.com/dword-design/rollup-config-component/commit/805cfb895ea6bc149aab61b7ea997ba8daf097b2))
+
 ## [2.0.6](https://github.com/dword-design/rollup-config-component/compare/v2.0.5...v2.0.6) (2021-06-27)
 
 
