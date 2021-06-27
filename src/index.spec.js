@@ -10,8 +10,69 @@ import { mkdir, outputFile, remove } from 'fs-extra'
 import { Builder, Nuxt } from 'nuxt'
 import outputFiles from 'output-files'
 
+const configFiles = {
+  '.babelrc.json': JSON.stringify({
+    extends: '@dword-design/babel-config',
+  }),
+  '.browserslistrc': endent`
+    current node
+    last 2 versions and > 2%
+    ie > 10
+  `,
+  'package.json': JSON.stringify({
+    browser: 'dist/index.esm.js',
+    main: 'dist/index.ssr.js',
+    module: 'dist/index.esm.js',
+    unpkg: 'dist/index.min.js',
+  }),
+  'src/entry.js': endent`
+    import TmpComponent from './index.vue'
+
+    const install = Vue => {
+      if (install.installed) return
+      install.installed = true
+      Vue.component('TmpComponent', TmpComponent)
+    }
+    
+    const plugin = { install }
+
+    if ('false' === process.env.ES_BUILD) {
+      let GlobalVue = null
+      if (typeof window !== 'undefined') {
+        GlobalVue = window.Vue
+      } else if (typeof global !== 'undefined') {
+        GlobalVue = global.Vue;
+      }
+      if (GlobalVue) {
+        GlobalVue.use(plugin)
+      }
+    }
+
+    TmpComponent.install = install
+
+    export default TmpComponent
+  `,
+}
+
 export default tester(
   {
+    babel: async () => {
+      await outputFiles({
+        ...configFiles,
+        'src/index.vue': endent`
+          <script>
+          const foo = 1 |> x => x * 2
+          
+          export default {
+            render: () => <div class="tmp-component">{foo}</div>
+          }
+          </script>
+        `,
+      })
+      await execa(packageName`rollup`, ['--config', require.resolve('.')], {
+        env: { NODE_ENV: 'production' },
+      })
+    },
     component: async () => {
       await outputFiles({
         'pages/index.vue': endent`
@@ -124,56 +185,14 @@ export default tester(
         await mkdir('tmp-component')
         await chdir('tmp-component', async () => {
           await outputFiles({
-            '.babelrc.json': JSON.stringify({
-              extends: '@dword-design/babel-config',
-            }),
-            '.browserslistrc': endent`
-              current node
-              last 2 versions and > 2%
-              ie > 10
+            ...configFiles,
+            'src/index.vue': endent`
+              <script>
+              export default {
+                render: () => <div class="tmp-component">Hello world</div>
+              }
+              </script>
             `,
-            'package.json': JSON.stringify({
-              browser: 'dist/index.esm.js',
-              main: 'dist/index.ssr.js',
-              module: 'dist/index.esm.js',
-              unpkg: 'dist/index.min.js',
-            }),
-            src: {
-              'entry.js': endent`
-                import TmpComponent from './index.vue'
-
-                const install = Vue => {
-                  if (install.installed) return
-                  install.installed = true
-                  Vue.component('TmpComponent', TmpComponent)
-                }
-                
-                const plugin = { install }
-
-                if ('false' === process.env.ES_BUILD) {
-                  let GlobalVue = null
-                  if (typeof window !== 'undefined') {
-                    GlobalVue = window.Vue
-                  } else if (typeof global !== 'undefined') {
-                    GlobalVue = global.Vue;
-                  }
-                  if (GlobalVue) {
-                    GlobalVue.use(plugin)
-                  }
-                }
-
-                TmpComponent.install = install
-
-                export default TmpComponent
-              `,
-              'index.vue': endent`
-                <script>
-                export default {
-                  render: () => <div class="tmp-component">Hello world</div>
-                }
-                </script>
-              `,
-            },
           })
           await execa(packageName`rollup`, ['--config', require.resolve('.')], {
             env: { NODE_ENV: 'production' },
