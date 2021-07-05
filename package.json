@@ -2,7 +2,7 @@
   "name": "@dword-design/rollup-config-component",
   "version": "2.0.7",
   "repository": "dword-design/rollup-config-component",
-  "funding": "https://www.buymeacoffee.com/dword",
+  "funding": "https://github.com/sponsors/dword-design",
   "license": "MIT",
   "author": "Sebastian Landwehr <info@sebastianlandwehr.com>",
   "main": "dist/index.js",
