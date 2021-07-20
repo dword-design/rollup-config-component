@@ -1,3 +1,10 @@
+## [2.0.10](https://github.com/dword-design/rollup-config-component/compare/v2.0.9...v2.0.10) (2021-07-20)
+
+
+### Bug Fixes
+
+* update dependency @rollup/plugin-replace to v3 ([c755127](https://github.com/dword-design/rollup-config-component/commit/c75512709cedcb2572ac48c08497a6a8b6ac3bfe))
+
 ## [2.0.9](https://github.com/dword-design/rollup-config-component/compare/v2.0.8...v2.0.9) (2021-07-20)
 
 
