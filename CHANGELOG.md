@@ -1,3 +1,10 @@
+## [2.0.9](https://github.com/dword-design/rollup-config-component/compare/v2.0.8...v2.0.9) (2021-07-20)
+
+
+### Bug Fixes
+
+* update config files ([4259a4e](https://github.com/dword-design/rollup-config-component/commit/4259a4ebe1541d7c00f1d1eb12d31d38efc9d786))
+
 ## [2.0.8](https://github.com/dword-design/rollup-config-component/compare/v2.0.7...v2.0.8) (2021-07-06)
 
 
