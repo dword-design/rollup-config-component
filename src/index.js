@@ -1,5 +1,6 @@
 import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import fs from 'fs-extra'
 import minimist from 'minimist'
@@ -7,6 +8,8 @@ import { terser } from 'rollup-plugin-terser'
 import vue from 'rollup-plugin-vue'
 
 import generateScopedName from './generate-scoped-name'
+
+console.log(process.cwd())
 
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs
@@ -136,6 +139,7 @@ if (!argv.format || argv.format === 'iife') {
       vue(baseConfig.plugins.vue),
       babel(baseConfig.plugins.babel),
       commonjs(),
+      nodeResolve({ browser: true }),
       terser({
         output: {
           ecma: 5,

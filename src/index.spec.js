@@ -6,7 +6,7 @@ import testerPluginTmpDir from '@dword-design/tester-plugin-tmp-dir'
 import packageName from 'depcheck-package-name'
 import execa from 'execa'
 import fileUrl from 'file-url'
-import { mkdir, outputFile, remove } from 'fs-extra'
+import { mkdir, outputFile } from 'fs-extra'
 import { Builder, Nuxt } from 'nuxt'
 import outputFiles from 'output-files'
 
@@ -56,9 +56,8 @@ const configFiles = {
 
 export default tester(
   {
-    babel: async () => {
-      await outputFiles({
-        ...configFiles,
+    babel: {
+      componentFiles: {
         'src/index.vue': endent`
           <script>
           const foo = 1 |> x => x * 2
@@ -68,10 +67,58 @@ export default tester(
           }
           </script>
         `,
-      })
-      await execa(packageName`rollup`, ['--config', require.resolve('.')], {
-        env: { NODE_ENV: 'production' },
-      })
+      },
+    },
+    'browser field': {
+      componentFiles: {
+        'node_modules/foo': {
+          'browser.js': "export default 'Hello world'",
+          'index.js': 'export default new Buffer()',
+          'package.json': JSON.stringify({ browser: 'browser.js' }),
+        },
+        'src/index.vue': endent`
+          <script>
+          import foo from 'foo'
+
+          export default {
+            render: () => <div class="tmp-component">{foo}</div>,
+          }
+          </script>
+        `,
+      },
+      test: async () => {
+        await outputFiles({
+          'index.html': endent`
+            <body>
+              <script src="https://unpkg.com/vue"></script>
+              <script src="tmp-component/dist/index.min.js"></script>
+            
+              <div id="app"></div>
+            
+              <script>
+                new Vue({
+                  el: '#app',
+                  template: '<tmp-component />',
+                })
+              </script>
+            </body>
+          `,
+        })
+
+        const browser = await puppeteer.launch()
+
+        const page = await browser.newPage()
+        try {
+          await page.goto(fileUrl('index.html'))
+
+          const component = await page.waitForSelector('.tmp-component')
+          expect(await component.evaluate(el => el.innerText)).toEqual(
+            'Hello world'
+          )
+        } finally {
+          await browser.close()
+        }
+      },
     },
     component: async () => {
       await outputFiles({
@@ -80,7 +127,7 @@ export default tester(
             <tmp-component />
           </template>
           <script>
-          import TmpComponent from '../../tmp-component'
+          import TmpComponent from '../tmp-component'
           export default {
             components: {
               TmpComponent,
@@ -109,6 +156,53 @@ export default tester(
         await nuxt.close()
       }
     },
+    'external dependency': {
+      componentFiles: {
+        'node_modules/foo/index.js': "export default 'Hello world'",
+        'src/index.vue': endent`
+          <script>
+          import foo from 'foo'
+
+          export default {
+            render: () => <div class="tmp-component">{foo}</div>,
+          }
+          </script>
+        `,
+      },
+      test: async () => {
+        await outputFiles({
+          'index.html': endent`
+            <body>
+              <script src="https://unpkg.com/vue"></script>
+              <script src="tmp-component/dist/index.min.js"></script>
+            
+              <div id="app"></div>
+            
+              <script>
+                new Vue({
+                  el: '#app',
+                  template: '<tmp-component />',
+                })
+              </script>
+            </body>
+          `,
+        })
+
+        const browser = await puppeteer.launch()
+
+        const page = await browser.newPage()
+        try {
+          await page.goto(fileUrl('index.html'))
+
+          const component = await page.waitForSelector('.tmp-component')
+          expect(await component.evaluate(el => el.innerText)).toEqual(
+            'Hello world'
+          )
+        } finally {
+          await browser.close()
+        }
+      },
+    },
     plugin: async () => {
       await outputFiles({
         'pages/index.vue': endent`
@@ -118,7 +212,7 @@ export default tester(
         `,
         'plugins/plugin.js': endent`
           import Vue from 'vue'
-          import TmpComponent from '../../tmp-component'
+          import TmpComponent from '../tmp-component'
           
           Vue.use(TmpComponent)
         `,
@@ -149,7 +243,7 @@ export default tester(
         endent`
         <body>
           <script src="https://unpkg.com/vue"></script>
-          <script src="../tmp-component/dist/index.min.js"></script>
+          <script src="tmp-component/dist/index.min.js"></script>
         
           <div id="app"></div>
         
@@ -180,8 +274,11 @@ export default tester(
   },
   [
     {
-      after: () => remove('tmp-component'),
-      before: async () => {
+      transform: test => async () => {
+        if (typeof test === 'function') {
+          test = { test }
+        }
+        test = { test: () => {}, ...test }
         await mkdir('tmp-component')
         await chdir('tmp-component', async () => {
           await outputFiles({
@@ -193,11 +290,13 @@ export default tester(
               }
               </script>
             `,
+            ...test.componentFiles,
           })
           await execa(packageName`rollup`, ['--config', require.resolve('.')], {
             env: { NODE_ENV: 'production' },
           })
         })
+        await test.test()
       },
     },
     testerPluginTmpDir(),
