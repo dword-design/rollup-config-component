@@ -103,7 +103,6 @@ if (!argv.format || argv.format === 'cjs') {
       file: 'dist/index.ssr.js',
       format: 'cjs',
       globals,
-      name: 'VueIcon',
     },
     plugins: [
       replace(baseConfig.plugins.replace),
@@ -130,7 +129,6 @@ if (!argv.format || argv.format === 'iife') {
       file: 'dist/index.min.js',
       format: 'iife',
       globals,
-      name: 'VueIcon',
     },
     plugins: [
       replace(baseConfig.plugins.replace),
