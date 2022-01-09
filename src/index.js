@@ -9,8 +9,6 @@ import vue from 'rollup-plugin-vue'
 
 import generateScopedName from './generate-scoped-name'
 
-console.log(process.cwd())
-
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs
   .readFileSync('./.browserslistrc')
