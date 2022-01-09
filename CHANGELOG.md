@@ -1,3 +1,11 @@
+## [2.0.14](https://github.com/dword-design/rollup-config-component/compare/v2.0.13...v2.0.14) (2022-01-09)
+
+
+### Bug Fixes
+
+* remove console.log ([6747921](https://github.com/dword-design/rollup-config-component/commit/674792159d8c0028ed3b53296173962235450c5c))
+* remove VueIcon name ([d92db78](https://github.com/dword-design/rollup-config-component/commit/d92db78f20756c6b22bc99bc6dcbc8b52397bae8))
+
 ## [2.0.13](https://github.com/dword-design/rollup-config-component/compare/v2.0.12...v2.0.13) (2022-01-04)
 
 
