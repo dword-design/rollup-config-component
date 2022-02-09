@@ -1,3 +1,10 @@
+## [2.0.16](https://github.com/dword-design/rollup-config-component/compare/v2.0.15...v2.0.16) (2022-02-09)
+
+
+### Bug Fixes
+
+* fix vue version ([fe2f5ce](https://github.com/dword-design/rollup-config-component/commit/fe2f5cee5e702e28e06edb9d0ee434de3a0cd7c6))
+
 ## [2.0.15](https://github.com/dword-design/rollup-config-component/compare/v2.0.14...v2.0.15) (2022-01-12)
 
 
