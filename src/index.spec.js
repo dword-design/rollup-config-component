@@ -10,6 +10,8 @@ import { mkdir, outputFile } from 'fs-extra'
 import { Builder, Nuxt } from 'nuxt'
 import outputFiles from 'output-files'
 
+import { vueCdnScript } from './variables'
+
 const configFiles = {
   '.babelrc.json': JSON.stringify({
     extends: '@dword-design/babel-config',
@@ -90,7 +92,7 @@ export default tester(
         await outputFiles({
           'index.html': endent`
             <body>
-              <script src="https://unpkg.com/vue"></script>
+              ${vueCdnScript}
               <script src="tmp-component/dist/index.min.js"></script>
             
               <div id="app"></div>
@@ -173,7 +175,7 @@ export default tester(
         await outputFiles({
           'index.html': endent`
             <body>
-              <script src="https://unpkg.com/vue"></script>
+              ${vueCdnScript}
               <script src="tmp-component/dist/index.min.js"></script>
             
               <div id="app"></div>
@@ -242,7 +244,7 @@ export default tester(
         'index.html',
         endent`
         <body>
-          <script src="https://unpkg.com/vue"></script>
+          ${vueCdnScript}
           <script src="tmp-component/dist/index.min.js"></script>
         
           <div id="app"></div>
