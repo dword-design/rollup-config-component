@@ -42,7 +42,7 @@
     "file-url": "^3.0.0",
     "nuxt": "^2.15.7",
     "output-files": "^2.0.5",
-    "rollup": "^2.52.3"
+    "rollup": "^3.0.0"
   },
   "engines": {
     "node": ">=12"
