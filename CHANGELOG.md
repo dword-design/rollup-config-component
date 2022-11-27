@@ -1,3 +1,10 @@
+## [2.0.17](https://github.com/dword-design/rollup-config-component/compare/v2.0.16...v2.0.17) (2022-11-27)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#81](https://github.com/dword-design/rollup-config-component/issues/81)) ([e6bf29e](https://github.com/dword-design/rollup-config-component/commit/e6bf29e4f573cc50d087eb7e3c0f0d9ab3575d53))
+
 ## [2.0.16](https://github.com/dword-design/rollup-config-component/compare/v2.0.15...v2.0.16) (2022-02-09)
 
 
