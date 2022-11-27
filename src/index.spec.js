@@ -6,11 +6,14 @@ import testerPluginTmpDir from '@dword-design/tester-plugin-tmp-dir'
 import packageName from 'depcheck-package-name'
 import execa from 'execa'
 import fileUrl from 'file-url'
-import { mkdir, outputFile } from 'fs-extra'
+import fs from 'fs-extra'
+import { createRequire } from 'module'
 import { Builder, Nuxt } from 'nuxt'
 import outputFiles from 'output-files'
 
-import { vueCdnScript } from './variables'
+import { vueCdnScript } from './variables.js'
+
+const _require = createRequire(import.meta.url)
 
 const configFiles = {
   '.babelrc.json': JSON.stringify({
@@ -240,7 +243,7 @@ export default tester(
       }
     },
     script: async () => {
-      await outputFile(
+      await fs.outputFile(
         'index.html',
         endent`
         <body>
@@ -281,7 +284,7 @@ export default tester(
           test = { test }
         }
         test = { test: () => {}, ...test }
-        await mkdir('tmp-component')
+        await fs.mkdir('tmp-component')
         await chdir('tmp-component', async () => {
           await outputFiles({
             ...configFiles,
@@ -294,9 +297,13 @@ export default tester(
             `,
             ...test.componentFiles,
           })
-          await execa(packageName`rollup`, ['--config', require.resolve('.')], {
-            env: { NODE_ENV: 'production' },
-          })
+          await execa(
+            packageName`rollup`,
+            ['--config', _require.resolve('.')],
+            {
+              env: { NODE_ENV: 'production' },
+            }
+          )
         })
         await test.test()
       },
