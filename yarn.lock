@@ -1326,9 +1326,9 @@
     std-env "^2.3.0"
 
 "@dword-design/base@^9.0.6":
-  version "9.0.8"
-  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-9.0.8.tgz#0a50b796f2de59e94ade5ba272828aa0cc2b629f"
-  integrity sha512-t1oZTd+xuWBPeLsaSxCizbAVFpnqlonq1JkyZnTNkPaiq5UpHLdoUm/Ggo0zD7Gp+Bwf5za47vdQiHpnDqpItA==
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-9.1.0.tgz#dd63e28570144ce94fec12c676fe9bdb13f7c7b1"
+  integrity sha512-5LsFSapEk7uZYec2OtufCfI+MM+FkuAWpjayjVHFapLqb4tbU/41Jtd9gQb+8prW+oMRZPWOs32fk7jqR0g8jg==
   dependencies:
     "@commitlint/cli" "^13.0.0"
     "@commitlint/config-conventional" "^13.0.0"
@@ -1409,9 +1409,9 @@
     babel-plugin-add-module-exports "^1.0.2"
 
 "@dword-design/depcheck-parser-sass@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@dword-design/depcheck-parser-sass/-/depcheck-parser-sass-3.0.0.tgz#b6b790154d85a315579a9335554b771a717835e1"
-  integrity sha512-nt/aJS/UoUzsx4PUR+SyicehdGOUYWOYwgUdwC8OOZ9O/grJf9pQ0UwJe68ivKGC4l+55AOZixIUvbGO0Cm2YA==
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@dword-design/depcheck-parser-sass/-/depcheck-parser-sass-3.0.1.tgz#ca8f11f76a2e506e750d26121e56e4dc08fcda06"
+  integrity sha512-fVD65GGqTWvHamHK9UbBMoovtrVwQ156XNP3UgU8ccI593Wpquv0J9ciJ3LoYak0irJcxnVd3Dzs0PeVSXqyww==
   dependencies:
     "@dword-design/functions" "^4.0.0"
     get-package-name "^2.0.0"
