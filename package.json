@@ -36,12 +36,12 @@
   "devDependencies": {
     "@dword-design/base": "^9.0.6",
     "@dword-design/chdir": "^2.0.4",
-    "@dword-design/puppeteer": "^5.0.3",
+    "@dword-design/puppeteer": "^6.0.0",
     "@dword-design/tester": "^2.0.6",
     "@dword-design/tester-plugin-tmp-dir": "^2.1.1",
     "depcheck-package-name": "^2.0.2",
-    "execa": "^5.1.1",
-    "file-url": "^3.0.0",
+    "execa": "^6.1.0",
+    "file-url": "^4.0.0",
     "nuxt": "^2.15.7",
     "output-files": "^2.0.5",
     "rollup": "^3.5.0"
