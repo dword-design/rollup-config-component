@@ -1,3 +1,10 @@
+## [2.0.18](https://github.com/dword-design/rollup-config-component/compare/v2.0.17...v2.0.18) (2022-11-28)
+
+
+### Bug Fixes
+
+* update dependency execa to v6 ([#51](https://github.com/dword-design/rollup-config-component/issues/51)) ([1b299d8](https://github.com/dword-design/rollup-config-component/commit/1b299d80f6ef03fbec72f9e08814791f80a70727))
+
 ## [2.0.17](https://github.com/dword-design/rollup-config-component/compare/v2.0.16...v2.0.17) (2022-11-27)
 
 
