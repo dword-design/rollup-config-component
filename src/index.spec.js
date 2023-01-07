@@ -3,15 +3,19 @@ import { endent } from '@dword-design/functions'
 import puppeteer from '@dword-design/puppeteer'
 import tester from '@dword-design/tester'
 import testerPluginTmpDir from '@dword-design/tester-plugin-tmp-dir'
+import { loadNuxt } from '@nuxt/kit'
 import packageName from 'depcheck-package-name'
-import { execa } from 'execa'
+import { execa, execaCommand } from 'execa'
 import fileUrl from 'file-url'
 import fs from 'fs-extra'
 import { createRequire } from 'module'
-import { Builder, Nuxt } from 'nuxt'
+import { build } from 'nuxt'
 import outputFiles from 'output-files'
+import { pEvent } from 'p-event'
+import kill from 'tree-kill-promise'
 
-import { vueCdnScript } from './variables.js'
+const vueCdnScript =
+  '<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>'
 
 const _require = createRequire(import.meta.url)
 
@@ -33,27 +37,21 @@ const configFiles = {
   'src/entry.js': endent`
     import TmpComponent from './index.vue'
 
-    const install = Vue => {
+    const install = app => {
       if (install.installed) return
       install.installed = true
-      Vue.component('TmpComponent', TmpComponent)
-    }
-    
-    const plugin = { install }
-
-    if ('false' === process.env.ES_BUILD) {
-      let GlobalVue = null
-      if (typeof window !== 'undefined') {
-        GlobalVue = window.Vue
-      } else if (typeof global !== 'undefined') {
-        GlobalVue = global.Vue;
-      }
-      if (GlobalVue) {
-        GlobalVue.use(plugin)
-      }
+      app.component('TmpComponent', TmpComponent)
     }
 
     TmpComponent.install = install
+
+    if ('false' === process.env.ES_BUILD) {
+      if (typeof window !== 'undefined') {
+        window.TmpComponent = TmpComponent
+      } else if (typeof global !== 'undefined') {
+        global.TmpComponent = TmpComponent
+      }
+    }
 
     export default TmpComponent
   `,
@@ -64,11 +62,15 @@ export default tester(
     babel: {
       componentFiles: {
         'src/index.vue': endent`
+          <template>
+            <div class="tmp-component">{{ foo }}</div>
+          </template>
+
           <script>
-          const foo = 1 |> x => x * 2
-          
           export default {
-            render: () => <div class="tmp-component">{foo}</div>
+            computed: {
+              foo: () => 1 |> x => x * 2,
+            },
           }
           </script>
         `,
@@ -82,11 +84,17 @@ export default tester(
           'package.json': JSON.stringify({ browser: 'browser.js' }),
         },
         'src/index.vue': endent`
+          <template>
+            <div class="tmp-component">{{ foo }}</div>
+          </template>
+
           <script>
           import foo from 'foo'
 
           export default {
-            render: () => <div class="tmp-component">{foo}</div>,
+            computed: {
+              foo: () => foo,
+            },
           }
           </script>
         `,
@@ -101,10 +109,11 @@ export default tester(
               <div id="app"></div>
             
               <script>
-                new Vue({
-                  el: '#app',
+                const app = Vue.createApp({
                   template: '<tmp-component />',
                 })
+                app.use(TmpComponent)
+                app.mount('#app')
               </script>
             </body>
           `,
@@ -142,9 +151,15 @@ export default tester(
         `,
       })
 
-      const nuxt = new Nuxt()
-      await new Builder(nuxt).build()
-      await nuxt.listen()
+      const nuxt = await loadNuxt({ config: { telemetry: false } })
+      await build(nuxt)
+
+      const childProcess = execaCommand('nuxt start', { all: true })
+      await pEvent(
+        childProcess.all,
+        'data',
+        data => data.toString() === 'Listening http://[::]:3000\n'
+      )
 
       const browser = await puppeteer.launch()
 
@@ -158,18 +173,24 @@ export default tester(
         )
       } finally {
         await browser.close()
-        await nuxt.close()
+        await kill(childProcess.pid)
       }
     },
     'external dependency': {
       componentFiles: {
         'node_modules/foo/index.js': "export default 'Hello world'",
         'src/index.vue': endent`
+          <template>
+            <div class="tmp-component">{{ foo }}</div>
+          </template>
+
           <script>
           import foo from 'foo'
 
           export default {
-            render: () => <div class="tmp-component">{foo}</div>,
+            computed: {
+              foo: () => foo,
+            },
           }
           </script>
         `,
@@ -184,10 +205,11 @@ export default tester(
               <div id="app"></div>
             
               <script>
-                new Vue({
-                  el: '#app',
+                const app = Vue.createApp({
                   template: '<tmp-component />',
                 })
+                app.use(TmpComponent)
+                app.mount('#app')
               </script>
             </body>
           `,
@@ -216,16 +238,21 @@ export default tester(
           </template>
         `,
         'plugins/plugin.js': endent`
-          import Vue from 'vue'
           import TmpComponent from '../tmp-component'
           
-          Vue.use(TmpComponent)
+          export default defineNuxtPlugin(nuxtApp => nuxtApp.vueApp.use(TmpComponent))
         `,
       })
 
-      const nuxt = new Nuxt({ plugins: ['~/plugins/plugin.js'] })
-      await new Builder(nuxt).build()
-      await nuxt.listen()
+      const nuxt = await loadNuxt({ config: { telemetry: false } })
+      await build(nuxt)
+
+      const childProcess = execaCommand('nuxt start', { all: true })
+      await pEvent(
+        childProcess.all,
+        'data',
+        data => data.toString() === 'Listening http://[::]:3000\n'
+      )
 
       const browser = await puppeteer.launch()
 
@@ -239,7 +266,7 @@ export default tester(
         )
       } finally {
         await browser.close()
-        await nuxt.close()
+        await kill(childProcess.pid)
       }
     },
     script: async () => {
@@ -253,10 +280,11 @@ export default tester(
           <div id="app"></div>
         
           <script>
-            new Vue({
-              el: '#app',
+            const app = Vue.createApp({
               template: '<tmp-component />',
             })
+            app.use(TmpComponent)
+            app.mount('#app')
           </script>
         </body>
       `
@@ -289,11 +317,9 @@ export default tester(
           await outputFiles({
             ...configFiles,
             'src/index.vue': endent`
-              <script>
-              export default {
-                render: () => <div class="tmp-component">Hello world</div>
-              }
-              </script>
+              <template>
+                <div class="tmp-component">Hello world</div>
+              </template>
             `,
             ...test.componentFiles,
           })
