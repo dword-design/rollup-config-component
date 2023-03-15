@@ -1,3 +1,10 @@
+## [2.0.19](https://github.com/dword-design/rollup-config-component/compare/v2.0.18...v2.0.19) (2023-03-15)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/chdir to v2.1.4 ([f446d62](https://github.com/dword-design/rollup-config-component/commit/f446d62dc95ebcd95b6913289c4bf1d1b0d72141))
+
 ## [2.0.18](https://github.com/dword-design/rollup-config-component/compare/v2.0.17...v2.0.18) (2022-11-28)
 
 
