@@ -1383,9 +1383,9 @@
     yaml "^1.8.2"
 
 "@dword-design/chdir@^2.0.0", "@dword-design/chdir@^2.0.4":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@dword-design/chdir/-/chdir-2.1.1.tgz#9d7ce6b3530381165415d6b8ed0b0994071ab0e8"
-  integrity sha512-PdWo7bwhmplqhJyTF8CNPpECj6Ivv85i+N9AAdTvL0b1xr910xJDAWuYUDUu/Lf1fz5mVeFqarNaxPLsQwNfig==
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@dword-design/chdir/-/chdir-2.1.4.tgz#bd96e7571bf792a6b1e50a9e64999f1520dde777"
+  integrity sha512-cHpMTx4XepHQi3hmDnKma5YXU4pm01k9xKI1k8Wwq25cN3j0FCWbiji11hdrRYr6+uDC9mrb/M5Mo0okYiNRzA==
 
 "@dword-design/ci@^3.0.0":
   version "3.0.9"
