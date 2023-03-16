@@ -1510,11 +1510,11 @@
   integrity sha512-vLTve5Gc3+c/ywvBh1wkDQv8EChkiuXOeloLUYAa446q7k5ZYrZYtVzCfcMKNN3cnbg7cJBUkEwW/+lEYOpqdQ==
 
 "@dword-design/tester-plugin-tmp-dir@^2.1.1":
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/@dword-design/tester-plugin-tmp-dir/-/tester-plugin-tmp-dir-2.1.6.tgz#56ea383c31ce9ced144f00e1a322122126a98a12"
-  integrity sha512-QIinz5XkoNvxLWUi89p483eVsgDSQZFuw6PGcNJd9ZSoszl5LIeFPwYNPXoW/jG0/E2wvT5shgywvrqOeq8O/Q==
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/@dword-design/tester-plugin-tmp-dir/-/tester-plugin-tmp-dir-2.1.12.tgz#29879578c147f6285326f12f93d4e62ad4c9d066"
+  integrity sha512-kT+zXxWFNUEJSuAIz+vFIPVpmJhhoMGr7Xx2rg7JbL532CYpQvKdSK9i3+qe7DNX0FhgTqax4T60MbV4KrUrog==
   dependencies:
-    with-local-tmp-dir "^4.0.0"
+    with-local-tmp-dir "^5.0.0"
 
 "@dword-design/tester@^2.0.6":
   version "2.0.11"
@@ -15911,10 +15911,10 @@ window-size@0.1.0:
   resolved "https://registry.yarnpkg.com/window-size/-/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"
   integrity sha512-1pTPQDKTdd61ozlKGNCjhNRd+KPmgLSGa3mZTHoOliaGcESD8G1PXhh7c1fgiPjVbNVfgy2Faw4BI8/m0cC8Mg==
 
-with-local-tmp-dir@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/with-local-tmp-dir/-/with-local-tmp-dir-4.1.0.tgz#8af69f0ebe10e930c9627f5eceb6b169b240afe9"
-  integrity sha512-cf1vG89YXvXfIU/yEf/YvOLr5onJxEj9vSaSeIPcgvvr5Uk91VPGfe8CfAJPcg9kiaieeSixZKGe6IAr+K91eA==
+with-local-tmp-dir@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/with-local-tmp-dir/-/with-local-tmp-dir-5.0.0.tgz#6565ee6e6bbf17f80d3def31f2b3404722fb0a9a"
+  integrity sha512-30Ppg9fPL/rrlh5PPOxqB0jYDztKrhD2K4HnVJaq99qHq5t5Dgi7SKWB1WvPvb33Rjg9KRtrrCn3jes5p8jooA==
   dependencies:
     "@dword-design/chdir" "^2.0.0"
     tmp-promise "^3.0.0"
