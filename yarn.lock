@@ -1517,12 +1517,11 @@
     with-local-tmp-dir "^5.0.0"
 
 "@dword-design/tester@^2.0.6":
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/@dword-design/tester/-/tester-2.0.11.tgz#a422b642c34e01bdb04c9ca873d84a3f00333c46"
-  integrity sha512-u79B7flY9nCHILIw7WF/M7mJw8VjGb3QKAjmh+ecxjiSi+LXuIOy4QXTxM18qNIKRTu3oJV8DEg6WMVp+fCdIg==
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/@dword-design/tester/-/tester-2.0.12.tgz#58f6d81aff29368367bbb86cae4b44e043092a6b"
+  integrity sha512-nf3lUQ5jUEQwzp5AhdfPPZMzFFUyWaEGjbuqwZ51pe4uLlrf2/hqaCIkXpaSLJ1ev/6FbV6/2Ax+FeyoVTCNMw==
   dependencies:
     "@dword-design/functions" "^4.0.0"
-    promise-sequential "^1.1.1"
 
 "@endemolshinegroup/cosmiconfig-typescript-loader@^3.0.2":
   version "3.0.2"
@@ -12888,11 +12887,6 @@ promise-retry@^2.0.1:
   dependencies:
     err-code "^2.0.2"
     retry "^0.12.0"
-
-promise-sequential@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/promise-sequential/-/promise-sequential-1.1.1.tgz#f79e8950ef86e7a7a85bf320452643592f6d2fb2"
-  integrity sha512-gpziThEJPnPEeaHNqjy9f4PE1JwXb07fX3dz+41nhALpIAaEI9VZU8Q89eyBBAa2xAhnz0KgUTDtCA7FZYbZQQ==
 
 promise@^7.0.1:
   version "7.3.1"
