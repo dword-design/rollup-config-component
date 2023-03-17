@@ -1,3 +1,10 @@
+## [2.0.24](https://github.com/dword-design/rollup-config-component/compare/v2.0.23...v2.0.24) (2023-03-17)
+
+
+### Bug Fixes
+
+* update dependency nuxt to v2.16.3 ([c1aa4ed](https://github.com/dword-design/rollup-config-component/commit/c1aa4edb346b3922265a47c98e2e5f4be384993f))
+
 ## [2.0.23](https://github.com/dword-design/rollup-config-component/compare/v2.0.22...v2.0.23) (2023-03-17)
 
 
