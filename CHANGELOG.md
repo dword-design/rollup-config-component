@@ -1,3 +1,10 @@
+## [2.0.22](https://github.com/dword-design/rollup-config-component/compare/v2.0.21...v2.0.22) (2023-03-17)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/puppeteer to v6.0.3 ([0a976d5](https://github.com/dword-design/rollup-config-component/commit/0a976d5313c6a4368b2111b649b164c4fc99dca1))
+
 ## [2.0.21](https://github.com/dword-design/rollup-config-component/compare/v2.0.20...v2.0.21) (2023-03-17)
 
 
