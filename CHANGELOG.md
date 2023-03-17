@@ -1,3 +1,10 @@
+## [2.0.25](https://github.com/dword-design/rollup-config-component/compare/v2.0.24...v2.0.25) (2023-03-17)
+
+
+### Bug Fixes
+
+* update dependency output-files to v2.0.13 ([a780b8f](https://github.com/dword-design/rollup-config-component/commit/a780b8f05227beb1e58f24c504112fd927e85b53))
+
 ## [2.0.24](https://github.com/dword-design/rollup-config-component/compare/v2.0.23...v2.0.24) (2023-03-17)
 
 
