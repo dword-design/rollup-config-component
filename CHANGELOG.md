@@ -1,3 +1,10 @@
+## [2.0.30](https://github.com/dword-design/rollup-config-component/compare/v2.0.29...v2.0.30) (2023-03-18)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/tester-plugin-tmp-dir to v2.1.15 ([1e5f208](https://github.com/dword-design/rollup-config-component/commit/1e5f208b33ae5e442cae236cb10ea7f4f0957d9c))
+
 ## [2.0.29](https://github.com/dword-design/rollup-config-component/compare/v2.0.28...v2.0.29) (2023-03-18)
 
 
