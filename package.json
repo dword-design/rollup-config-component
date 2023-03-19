@@ -42,7 +42,7 @@
     "depcheck-package-name": "^2.0.2",
     "execa": "^6.1.0",
     "file-url": "^4.0.0",
-    "nuxt": "^2.15.7",
+    "nuxt": "^3.0.0",
     "output-files": "^2.0.5",
     "rollup": "^3.5.0"
   },
